@@ -91,9 +91,12 @@
 
   function getGhConfig() {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY_GH_CONFIG) || '{}');
+      const cfg = JSON.parse(localStorage.getItem(STORAGE_KEY_GH_CONFIG) || '{}');
+      if (!cfg.repo) cfg.repo = 'redoyagltd-afk/arch-portfolio';
+      if (!cfg.branch) cfg.branch = 'main';
+      return cfg;
     } catch (e) {
-      return {};
+      return { repo: 'redoyagltd-afk/arch-portfolio', branch: 'main' };
     }
   }
 
