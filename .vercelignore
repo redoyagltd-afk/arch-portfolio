@@ -1,0 +1,6 @@
+# Local development tools and scripts
+tools/
+server.js
+start-studio.bat
+.git/
+.gitignore

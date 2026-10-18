@@ -8,5 +8,5 @@ echo   Opening: http://localhost:3000/dashboard.html
 echo   Press Ctrl+C in this window anytime to stop the server.
 echo.
 start http://localhost:3000/dashboard.html
-node server.js
+node tools\server.js
 pause
