@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Management Dashboard — ARK STUDIO</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Inline Theme Init Script (Prevents FOUC) -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('ark_theme');
+                if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">ARK STUDIO</a>
+        </div>
+        <div class="header-actions">
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html#work">Work</a>
+                <a href="about.html">About</a>
+                <a href="journal.html">Journal</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle dark / light mode">
+                <svg class="icon-moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Dashboard Header with Live Studio Meta -->
+        <header class="page-header" style="padding-bottom: 0;">
+            <div class="dash-header-wrap">
+                <div>
+                    <p class="dash-label">Studio Content Management System</p>
+                    <h1 class="page-title">Project Studio</h1>
+                </div>
+                <div class="dash-meta-badges">
+                    <span class="dash-badge">
+                        <span class="dash-badge-pulse"></span>
+                        <span id="dash-studio-clock">Loading Studio Time...</span>
+                    </span>
+                    <span class="dash-badge">
+                        Viewport: <strong id="dash-viewport-size">1440 × 900px</strong>
+                    </span>
+                    <span class="dash-badge" id="dash-server-badge">Checking Mode...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Server Mode Banner -->
+        <div class="dash-server-banner">
+            <div class="dash-server-banner-inner">
+                <div class="dash-server-status">
+                    <span class="dash-badge-pulse"></span>
+                    <span id="dash-server-status-text">Detecting studio mode...</span>
+                </div>
+                <div class="dash-server-actions">
+                    <button type="button" class="dash-btn-primary" id="dash-btn-publish-live" title="Publish portfolio to live Vercel website via GitHub">🚀 Publish to Live Site</button>
+                    <button type="button" class="dash-btn-text" id="dash-btn-cloud-settings" title="Configure GitHub remote sync credentials">⚙️ Cloud Sync</button>
+                    <button type="button" class="dash-btn-text" id="dash-btn-export-json" title="Download backup of all studio projects">Backup JSON</button>
+                    <button type="button" class="dash-btn-text" id="dash-btn-import-json" title="Restore projects from backup">Import JSON</button>
+                    <input type="file" id="dash-json-file-input" accept=".json" style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================
+             PROJECT STUDIO MANAGER
+             ============================================ -->
+        <section class="dash-section" aria-label="Project Manager">
+            <div class="dash-section-header">
+                <div>
+                    <h2 class="dash-section-title">Project Library</h2>
+                    <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px;">
+                        Manage existing architectural projects, edit text &amp; specifications, or upload new work.
+                    </p>
+                </div>
+                <div style="display: flex; gap: var(--space-xs); align-items: center;">
+                    <span class="dash-badge" id="dash-project-count-badge">3 Projects Available</span>
+                    <button type="button" class="dash-btn-primary" id="dash-btn-new-proj">+ Add New Project</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Project Cards Container -->
+            <div id="dash-project-cards-container" class="dash-project-cards-grid">
+                <!-- Injected via js/dashboard.js -->
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             STATISTICS OVERVIEW
+             ============================================ -->
+        <section class="dash-section" aria-label="Site Statistics">
+            <div class="dash-section-header">
+                <h2 class="dash-section-title">Studio Metrics</h2>
+                <span class="dash-badge">Static Architecture</span>
+            </div>
+            <div class="dash-stats-grid">
+                <div class="dash-stat-card">
+                    <span class="dash-stat-value" id="stat-pages">8</span>
+                    <span class="dash-stat-label">Total Pages</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-value" id="stat-projects">3</span>
+                    <span class="dash-stat-label">Projects</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-value" id="stat-journal">3</span>
+                    <span class="dash-stat-label">Journal Entries</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-value" id="stat-images">6</span>
+                    <span class="dash-stat-label">Photos in Library</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-value">2.8</span>
+                    <span class="dash-stat-label">Size (MB)</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-value">0</span>
+                    <span class="dash-stat-label">Dependencies</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             MEDIA LIBRARY ASSETS
+             ============================================ -->
+        <section class="dash-section" aria-label="Media Library">
+            <div class="dash-section-header">
+                <div>
+                    <h2 class="dash-section-title">Media Library</h2>
+                    <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px;">
+                        Locally stored architectural photography. Click "Copy Path" to use in any project.
+                    </p>
+                </div>
+                <span class="dash-badge">6 Photography Assets</span>
+            </div>
+
+            <div class="dash-media-grid">
+
+                <div class="dash-media-card">
+                    <div class="dash-media-thumb">
+                        <img src="images/project2.jpg" alt="Concrete Pavilion Exterior" loading="lazy">
+                    </div>
+                    <div class="dash-media-info">
+                        <span class="dash-media-name">project2.jpg</span>
+                        <span class="dash-media-size">460.7 KB</span>
+                    </div>
+                    <span class="dash-media-path">images/project2.jpg</span>
+                    <button type="button" class="dash-copy-path-btn" data-path="images/project2.jpg">Copy Path</button>
+                </div>
+
+                <div class="dash-media-card">
+                    <div class="dash-media-thumb">
+                        <img src="images/project1.jpg" alt="Glasshouse Tower Facade" loading="lazy">
+                    </div>
+                    <div class="dash-media-info">
+                        <span class="dash-media-name">project1.jpg</span>
+                        <span class="dash-media-size">425.2 KB</span>
+                    </div>
+                    <span class="dash-media-path">images/project1.jpg</span>
+                    <button type="button" class="dash-copy-path-btn" data-path="images/project1.jpg">Copy Path</button>
+                </div>
+
+                <div class="dash-media-card">
+                    <div class="dash-media-thumb">
+                        <img src="images/hero-bg.jpg" alt="Terracotta Brick Residence" loading="lazy">
+                    </div>
+                    <div class="dash-media-info">
+                        <span class="dash-media-name">hero-bg.jpg</span>
+                        <span class="dash-media-size">507.6 KB</span>
+                    </div>
+                    <span class="dash-media-path">images/hero-bg.jpg</span>
+                    <button type="button" class="dash-copy-path-btn" data-path="images/hero-bg.jpg">Copy Path</button>
+                </div>
+
+                <div class="dash-media-card">
+                    <div class="dash-media-thumb">
+                        <img src="images/projects/concrete-pavilion/project2.jpg" alt="Pavilion street elevation" loading="lazy">
+                    </div>
+                    <div class="dash-media-info">
+                        <span class="dash-media-name">concrete-pavilion / 03</span>
+                        <span class="dash-media-size">460.7 KB</span>
+                    </div>
+                    <span class="dash-media-path">images/projects/concrete-pavilion/project2.jpg</span>
+                    <button type="button" class="dash-copy-path-btn" data-path="images/projects/concrete-pavilion/project2.jpg">Copy Path</button>
+                </div>
+
+                <div class="dash-media-card">
+                    <div class="dash-media-thumb">
+                        <img src="images/projects/concrete-pavilion/project1.jpg" alt="Pavilion axial aperture" loading="lazy">
+                    </div>
+                    <div class="dash-media-info">
+                        <span class="dash-media-name">concrete-pavilion / 02</span>
+                        <span class="dash-media-size">425.2 KB</span>
+                    </div>
+                    <span class="dash-media-path">images/projects/concrete-pavilion/project1.jpg</span>
+                    <button type="button" class="dash-copy-path-btn" data-path="images/projects/concrete-pavilion/project1.jpg">Copy Path</button>
+                </div>
+
+                <div class="dash-media-card">
+                    <div class="dash-media-thumb">
+                        <img src="images/projects/concrete-pavilion/hero-bg.jpg" alt="Pavilion jali screen" loading="lazy">
+                    </div>
+                    <div class="dash-media-info">
+                        <span class="dash-media-name">concrete-pavilion / 01</span>
+                        <span class="dash-media-size">507.6 KB</span>
+                    </div>
+                    <span class="dash-media-path">images/projects/concrete-pavilion/hero-bg.jpg</span>
+                    <button type="button" class="dash-copy-path-btn" data-path="images/projects/concrete-pavilion/hero-bg.jpg">Copy Path</button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             SITE MAP & PAGES
+             ============================================ -->
+        <section class="dash-section" aria-label="Site Map">
+            <div class="dash-section-header">
+                <h2 class="dash-section-title">Site Map &amp; Navigation</h2>
+                <span class="dash-badge">All Links 100% Verified</span>
+            </div>
+            <div class="dash-sitemap-grid">
+
+                <a href="index.html" class="dash-page-card" target="_blank">
+                    <div class="dash-page-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="dash-page-card-info">
+                        <h3>Homepage</h3>
+                        <p>Hero • Selected Works Grid • Philosophy • CTA</p>
+                    </div>
+                    <span class="dash-page-card-status dash-status-live">Live</span>
+                </a>
+
+                <a href="about.html" class="dash-page-card" target="_blank">
+                    <div class="dash-page-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="dash-page-card-info">
+                        <h3>About</h3>
+                        <p>Studio statement • Practice areas • CV</p>
+                    </div>
+                    <span class="dash-page-card-status dash-status-live">Live</span>
+                </a>
+
+                <a href="journal.html" class="dash-page-card" target="_blank">
+                    <div class="dash-page-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2V3z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7V3z"/></svg>
+                    </div>
+                    <div class="dash-page-card-info">
+                        <h3>Journal</h3>
+                        <p>3 research essays and field notes</p>
+                    </div>
+                    <span class="dash-page-card-status dash-status-live">Live</span>
+                </a>
+
+                <a href="contact.html" class="dash-page-card" target="_blank">
+                    <div class="dash-page-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="dash-page-card-info">
+                        <h3>Contact</h3>
+                        <p>Email • Dhaka coordinates • Office hours</p>
+                    </div>
+                    <span class="dash-page-card-status dash-status-live">Live</span>
+                </a>
+
+                <a href="404.html" class="dash-page-card" target="_blank">
+                    <div class="dash-page-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    </div>
+                    <div class="dash-page-card-info">
+                        <h3>404 Error Page</h3>
+                        <p>Minimalist not-found fallback</p>
+                    </div>
+                    <span class="dash-page-card-status dash-status-live">Live</span>
+                </a>
+
+                <a href="sitemap.xml" class="dash-page-card" target="_blank">
+                    <div class="dash-page-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div class="dash-page-card-info">
+                        <h3>SEO Sitemap</h3>
+                        <p>sitemap.xml • robots.txt • favicon.svg</p>
+                    </div>
+                    <span class="dash-page-card-status dash-status-live">Live</span>
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             INTERACTIVE CONTENT READINESS CHECKLIST
+             ============================================ -->
+        <section class="dash-section" aria-label="Content Checklist">
+            <div class="dash-section-header">
+                <div>
+                    <h2 class="dash-section-title">Content Readiness Checklist</h2>
+                    <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px;">
+                        Interactive progress tracker. Click any task to toggle complete state (persists automatically).
+                    </p>
+                </div>
+                <button type="button" class="dash-btn-text" id="checklist-reset-btn">Reset Defaults</button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="dash-progress-container">
+                <div class="dash-progress-track">
+                    <div class="dash-progress-fill" id="checklist-progress-bar"></div>
+                </div>
+                <span class="dash-progress-label" id="checklist-progress-text">Calculating...</span>
+            </div>
+
+            <div class="dash-checklist-grid">
+
+                <div class="dash-checklist-card">
+                    <h3>Homepage</h3>
+                    <ul class="dash-checklist-interactive">
+                        <li data-id="hp-1" data-initial="true" data-checked="true">Hero photograph and priority preload</li>
+                        <li data-id="hp-2" data-initial="true" data-checked="true">Headline copywriting &amp; subline</li>
+                        <li data-id="hp-3" data-initial="true" data-checked="true">Selected Works 3-card responsive grid</li>
+                        <li data-id="hp-4" data-initial="true" data-checked="true">Studio philosophy statement</li>
+                        <li data-id="hp-5" data-initial="true" data-checked="true">Call to action to contact page</li>
+                        <li data-id="hp-6" data-initial="true" data-checked="true">All project cards linked to dedicated pages</li>
+                    </ul>
+                </div>
+
+                <div class="dash-checklist-card">
+                    <h3>About Page</h3>
+                    <ul class="dash-checklist-interactive">
+                        <li data-id="ab-1" data-initial="true" data-checked="true">Studio manifesto and core statement</li>
+                        <li data-id="ab-2" data-initial="true" data-checked="true">Core practice areas taxonomy</li>
+                        <li data-id="ab-3" data-initial="true" data-checked="true">Architectural lineage &amp; background</li>
+                        <li data-id="ab-4" data-initial="false" data-checked="false">Add architect portrait photograph</li>
+                        <li data-id="ab-5" data-initial="false" data-checked="false">Add formal education details</li>
+                        <li data-id="ab-6" data-initial="false" data-checked="false">Link downloadable CV / resume PDF</li>
+                    </ul>
+                </div>
+
+                <div class="dash-checklist-card">
+                    <h3>Project System</h3>
+                    <ul class="dash-checklist-interactive">
+                        <li data-id="pj-1" data-initial="true" data-checked="true">Modular project layout system</li>
+                        <li data-id="pj-2" data-initial="true" data-checked="true">The Concrete Pavilion reference page</li>
+                        <li data-id="pj-3" data-initial="true" data-checked="true">Glasshouse Atrium project page published</li>
+                        <li data-id="pj-4" data-initial="true" data-checked="true">Brick Screen Residence project page published</li>
+                        <li data-id="pj-5" data-initial="true" data-checked="true">Fullscreen gallery lightbox with keyboard controls</li>
+                        <li data-id="pj-6" data-initial="true" data-checked="true">Project prev/next loop pagination</li>
+                    </ul>
+                </div>
+
+                <div class="dash-checklist-card">
+                    <h3>Technical &amp; Production</h3>
+                    <ul class="dash-checklist-interactive">
+                        <li data-id="tc-1" data-initial="true" data-checked="true">Dark / Light dual theme with FOUC prevention</li>
+                        <li data-id="tc-2" data-initial="true" data-checked="true">Responsive across mobile, tablet, desktop</li>
+                        <li data-id="tc-3" data-initial="true" data-checked="true">Open Graph &amp; Twitter SEO metadata</li>
+                        <li data-id="tc-4" data-initial="true" data-checked="true">WCAG 2.1 AA accessibility compliance</li>
+                        <li data-id="tc-5" data-initial="true" data-checked="true">sitemap.xml and robots.txt configured</li>
+                        <li data-id="tc-6" data-initial="true" data-checked="true">Local studio server (`server.js` &amp; `start-studio.bat`)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ======================================================================
+         VISUAL PROJECT EDITOR MODAL
+         ====================================================================== -->
+    <div id="dash-editor-modal" class="dash-editor-modal" role="dialog" aria-modal="true" aria-labelledby="dash-editor-modal-title">
+        <div class="dash-editor-container">
+
+            <!-- Modal Header -->
+            <div class="dash-editor-header">
+                <h3 class="dash-editor-title" id="dash-editor-modal-title">Edit Project</h3>
+                <button type="button" class="dash-editor-close" id="dash-editor-close-btn" aria-label="Close Editor">&times;</button>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="dash-editor-tabs">
+                <button type="button" class="dash-editor-tab-btn is-active" data-target="tab-info">1. General Info</button>
+                <button type="button" class="dash-editor-tab-btn" data-target="tab-specs">2. Specifications</button>
+                <button type="button" class="dash-editor-tab-btn" data-target="tab-narrative">3. Design Narrative</button>
+                <button type="button" class="dash-editor-tab-btn" data-target="tab-media">4. Imagery &amp; Uploads</button>
+            </div>
+
+            <!-- Modal Body / Panels -->
+            <div class="dash-editor-body">
+
+                <!-- PANEL 1: General Info -->
+                <div class="dash-editor-panel is-active" id="tab-info">
+                    <div class="dash-form-row">
+                        <div class="dash-form-group">
+                            <label for="edit-title">Project Title *</label>
+                            <input type="text" id="edit-title" class="dash-input" placeholder="e.g. The Concrete Pavilion" required>
+                        </div>
+                        <div class="dash-form-group">
+                            <label for="edit-slug">URL Slug / Filename *</label>
+                            <input type="text" id="edit-slug" class="dash-input" placeholder="e.g. concrete-pavilion">
+                            <small>Saves as <code>projects/[slug].html</code></small>
+                        </div>
+                    </div>
+
+                    <div class="dash-form-group">
+                        <label for="edit-typology">Typology</label>
+                        <input type="text" id="edit-typology" class="dash-input" placeholder="e.g. Residential">
+                        <div class="dash-typology-pills">
+                            <button type="button" class="dash-pill" data-value="Residential">Residential</button>
+                            <button type="button" class="dash-pill" data-value="Commercial">Commercial</button>
+                            <button type="button" class="dash-pill" data-value="Cultural">Cultural</button>
+                            <button type="button" class="dash-pill" data-value="Pavilion">Pavilion</button>
+                            <button type="button" class="dash-pill" data-value="Urban">Urban</button>
+                            <button type="button" class="dash-pill" data-value="Adaptive Reuse">Adaptive Reuse</button>
+                        </div>
+                    </div>
+
+                    <div class="dash-form-row">
+                        <div class="dash-form-group">
+                            <label for="edit-location">Location</label>
+                            <input type="text" id="edit-location" class="dash-input" value="Dhaka, Bangladesh">
+                        </div>
+                        <div class="dash-form-group">
+                            <label for="edit-year">Year</label>
+                            <input type="text" id="edit-year" class="dash-input" value="2025">
+                        </div>
+                    </div>
+
+                    <div class="dash-form-group">
+                        <label for="edit-status">Status</label>
+                        <select id="edit-status" class="dash-input">
+                            <option value="Built">Built / Completed</option>
+                            <option value="Under Construction">Under Construction</option>
+                            <option value="Design Phase">Design Phase</option>
+                            <option value="Concept">Concept / Research</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- PANEL 2: Specifications -->
+                <div class="dash-editor-panel" id="tab-specs">
+                    <div class="dash-form-row">
+                        <div class="dash-form-group">
+                            <label for="edit-architect">Lead Architect / Team</label>
+                            <input type="text" id="edit-architect" class="dash-input" value="Ark Studio Team">
+                        </div>
+                        <div class="dash-form-group">
+                            <label for="edit-concept">Core Design Concept</label>
+                            <input type="text" id="edit-concept" class="dash-input" placeholder="e.g. Pitched Roofs &amp; Fluid Flight Geometry">
+                        </div>
+                    </div>
+
+                    <div class="dash-form-row">
+                        <div class="dash-form-group">
+                            <label for="edit-site-area">Site Area</label>
+                            <input type="text" id="edit-site-area" class="dash-input" placeholder="e.g. 4,500 sq.ft.">
+                        </div>
+                        <div class="dash-form-group">
+                            <label for="edit-built-area">Built Area</label>
+                            <input type="text" id="edit-built-area" class="dash-input" placeholder="e.g. 6,200 sq.ft.">
+                        </div>
+                    </div>
+
+                    <div class="dash-form-group">
+                        <label for="edit-materials">Key Materials</label>
+                        <input type="text" id="edit-materials" class="dash-input" placeholder="e.g. Board-marked Concrete, Terracotta, Teak">
+                    </div>
+                </div>
+
+                <!-- PANEL 3: Design Narrative -->
+                <div class="dash-editor-panel" id="tab-narrative">
+                    <div class="dash-form-group">
+                        <label for="edit-narrative1">Paragraph 1 — Massing &amp; Spatial Concept</label>
+                        <textarea id="edit-narrative1" class="dash-textarea" rows="3" placeholder="Explain the project intention, volumetric transitions, and primary form..."></textarea>
+                    </div>
+
+                    <div class="dash-form-group">
+                        <label for="edit-narrative2">Paragraph 2 — Daylight Modulation &amp; Apertures</label>
+                        <textarea id="edit-narrative2" class="dash-textarea" rows="3" placeholder="Describe how daylight enters the building, seasonal shadow patterns, and interior experience..."></textarea>
+                    </div>
+
+                    <div class="dash-form-group">
+                        <label for="edit-narrative3">Paragraph 3 — Climate Response &amp; Material Truth</label>
+                        <textarea id="edit-narrative3" class="dash-textarea" rows="3" placeholder="Passive cooling strategies, ventilation screens, material tactility, and connection to surroundings..."></textarea>
+                    </div>
+                </div>
+
+                <!-- PANEL 4: Imagery & Uploads -->
+                <div class="dash-editor-panel" id="tab-media">
+                    <div class="dash-dropzone" id="dash-dropzone">
+                        <div class="dash-dropzone-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        </div>
+                        <p><strong>Click to choose images</strong> or drag and drop photos here</p>
+                        <span>Supports JPG, PNG, WEBP &bull; High-resolution architectural photography</span>
+                        <input type="file" id="dash-file-input" multiple accept="image/*" style="display: none;">
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-sm);">
+                        <span style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wider); font-weight: 600;">Project Gallery Photos</span>
+                        <button type="button" class="dash-btn-text" id="dash-btn-add-existing-media">+ Add from Library</button>
+                    </div>
+
+                    <div id="dash-editor-image-gallery" class="dash-upload-gallery">
+                        <!-- Uploaded / Attached Image Cards Render Here -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Actions Footer -->
+            <div class="dash-editor-footer">
+                <div class="dash-editor-actions-left">
+                    <button type="button" class="dash-btn-text" id="dash-btn-cancel-editor">Cancel</button>
+                    <button type="button" class="dash-btn-secondary" id="dash-btn-preview-form">👁️ Preview</button>
+                    <button type="button" class="dash-btn-secondary" id="dash-btn-copy-card-form">📋 Copy Card</button>
+                </div>
+                <div class="dash-editor-actions-right">
+                    <button type="button" class="dash-btn-secondary" id="dash-btn-download-html">📥 Download .html</button>
+                    <button type="button" class="dash-btn-primary" id="dash-btn-save-library">💾 Save to Library</button>
+                    <button type="button" class="dash-btn-primary dash-btn-success" id="dash-btn-direct-save" style="display: none;">⚡ Direct Save to Disk</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ======================================================================
+         LIVE PREVIEW MODAL
+         ====================================================================== -->
+    <div id="dash-preview-modal" class="dash-preview-modal" role="dialog" aria-modal="true" aria-labelledby="dash-preview-title">
+        <div class="dash-preview-frame-container">
+            <div class="dash-preview-frame-header">
+                <span class="dash-preview-frame-title" id="dash-preview-title">Project Live Preview</span>
+                <button type="button" class="dash-editor-close" id="dash-preview-close-btn" aria-label="Close Preview">&times;</button>
+            </div>
+            <iframe id="dash-preview-iframe" class="dash-preview-frame-iframe" title="Live Project Preview"></iframe>
+    </div>
+
+
+    <!-- ======================================================================
+         CLOUD SYNC / REMOTE PUBLISH MODAL
+         ====================================================================== -->
+    <div id="dash-cloud-modal" class="dash-editor-modal" role="dialog" aria-modal="true" aria-labelledby="dash-cloud-title">
+        <div class="dash-editor-backdrop" id="dash-cloud-backdrop"></div>
+        <div class="dash-editor-dialog" style="max-width: 580px;">
+            <div class="dash-editor-header">
+                <div>
+                    <h2 class="dash-editor-title" id="dash-cloud-title">Global Cloud Sync Settings</h2>
+                    <p class="dash-editor-subtitle">Update your portfolio from any computer, tablet, or phone worldwide</p>
+                </div>
+                <button type="button" class="dash-editor-close" id="dash-cloud-close-btn" aria-label="Close Settings">&times;</button>
+            </div>
+            <div class="dash-editor-body" style="padding: var(--space-md);">
+                <div class="dash-form-group">
+                    <label for="dash-gh-repo">GitHub Repository (username/repo-name)</label>
+                    <input type="text" id="dash-gh-repo" class="dash-input" placeholder="e.g. username/arch-portfolio">
+                    <span style="font-size: 11px; color: var(--color-text-muted);">The GitHub repository linked to your live Vercel site.</span>
+                </div>
+                <div class="dash-form-group">
+                    <label for="dash-gh-branch">Branch</label>
+                    <input type="text" id="dash-gh-branch" class="dash-input" value="main" placeholder="main">
+                </div>
+                <div class="dash-form-group">
+                    <label for="dash-gh-token">GitHub Personal Access Token</label>
+                    <input type="password" id="dash-gh-token" class="dash-input" placeholder="ghp_... or github_pat_...">
+                    <span style="font-size: 11px; color: var(--color-text-muted);">
+                        Stored safely in your device browser only. Requires <code>Contents: Read and write</code> permission.
+                    </span>
+                </div>
+                <div id="dash-cloud-status-box" style="margin-top: var(--space-sm); padding: 10px 14px; border: 1px solid var(--color-border); font-size: var(--text-xs); background: var(--color-bg-alt); display: none; line-height: 1.5;">
+                </div>
+            </div>
+            <div class="dash-editor-footer">
+                <div class="dash-editor-actions-left">
+                    <button type="button" class="dash-btn-text" id="dash-cloud-btn-cancel">Close</button>
+                    <button type="button" class="dash-btn-secondary" id="dash-cloud-btn-test">⚡ Test Connection</button>
+                </div>
+                <div class="dash-editor-actions-right">
+                    <button type="button" class="dash-btn-primary" id="dash-cloud-btn-save">Save Credentials</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 ARK STUDIO. All rights reserved.</p>
+        <div class="footer-nav">
+            <a href="index.html#work">Work</a>
+            <a href="about.html">About</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+            <a href="dashboard.html" aria-current="page">Dashboard</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /dashboard.html
+Allow: /
+
+Sitemap: https://arkstudio.arch/sitemap.xml

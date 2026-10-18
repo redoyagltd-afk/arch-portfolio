@@ -1,0 +1,98 @@
+[
+  {
+    "id": "concrete-pavilion",
+    "slug": "concrete-pavilion",
+    "title": "The Concrete Pavilion",
+    "typology": "Residential",
+    "location": "Dhaka, Bangladesh",
+    "year": "2025",
+    "status": "Built",
+    "siteArea": "4,500 sq.ft.",
+    "builtArea": "6,200 sq.ft.",
+    "leadArchitect": "Ark Studio Team",
+    "materials": "Board-marked Concrete, Terracotta, Teak",
+    "concept": "Pitched Roofs & Fluid Flight Geometry",
+    "narrative1": "This project explores the intersection of raw materiality and lightweight, dynamic forms. Inspired by traditional regional roof profiles and the fluid contours of birds in flight, the massing transitions smoothly from ground-level concrete stability into soaring open vistas.",
+    "narrative2": "Large glass apertures puncture the brutalist concrete form, allowing natural light to wash across the interior surfaces throughout the day, creating an ever-shifting play of shadows and connecting the occupants directly with changing daylight.",
+    "narrative3": "Terracotta screening filters direct tropical solar radiation while maintaining continuous cross-ventilation, balancing private refuge with climatic responsiveness.",
+    "heroImage": "images/projects/concrete-pavilion/project2.jpg",
+    "images": [
+      {
+        "path": "images/projects/concrete-pavilion/hero-bg.jpg",
+        "caption": "01. Solar screening and brickwork detail"
+      },
+      {
+        "path": "images/projects/concrete-pavilion/project1.jpg",
+        "caption": "02. Vertical massing and corner apertures"
+      },
+      {
+        "path": "images/projects/concrete-pavilion/project2.jpg",
+        "caption": "03. Primary elevation showing canopy overhang and street interface"
+      }
+    ]
+  },
+  {
+    "id": "glasshouse-atrium",
+    "slug": "glasshouse-atrium",
+    "title": "Glasshouse Atrium",
+    "typology": "Commercial",
+    "location": "Dhaka, Bangladesh",
+    "year": "2024",
+    "status": "Built",
+    "siteArea": "6,800 sq.ft.",
+    "builtArea": "18,500 sq.ft.",
+    "leadArchitect": "Ark Studio Team",
+    "materials": "Structural Steel, Low-E Glass, Cast Concrete",
+    "concept": "Vertical Transparency & Urban Atrium",
+    "narrative1": "Positioned at a bustling urban intersection in Dhaka, Glasshouse Atrium explores how vertical transparency can create civic porosity within dense commercial districts. The building steps back from the street line, offering a public plaza before ascending into a dramatic vertical atrium.",
+    "narrative2": "Cantilevered glass volumes project outward from a rugged concrete spine, modulating natural light throughout the interior floors. The central light well acts as a natural thermal chimney, drawing warm air upward and reducing mechanical cooling demands.",
+    "narrative3": "By night, the structure acts as an urban lantern, revealing its internal staircases, mezzanine galleries, and dynamic spatial rhythm to passersby on the street below.",
+    "heroImage": "images/project1.jpg",
+    "images": [
+      {
+        "path": "images/project1.jpg",
+        "caption": "01. Cantilevered volumes and corner articulation"
+      },
+      {
+        "path": "images/project2.jpg",
+        "caption": "02. Material dialogue: raw concrete and glass envelopes"
+      },
+      {
+        "path": "images/hero-bg.jpg",
+        "caption": "03. Streetscape context and pedestrian threshold"
+      }
+    ]
+  },
+  {
+    "id": "brick-screen-residence",
+    "slug": "brick-screen-residence",
+    "title": "Brick Screen Residence",
+    "typology": "Residential",
+    "location": "Dhaka, Bangladesh",
+    "year": "2025",
+    "status": "Built",
+    "siteArea": "3,600 sq.ft.",
+    "builtArea": "5,200 sq.ft.",
+    "leadArchitect": "Ark Studio Team",
+    "materials": "Local Terracotta Brick, Fair-Face Concrete, Teak",
+    "concept": "Perforated Jali & Passive Climate Envelope",
+    "narrative1": "Nestled within a residential enclave of Dhaka, the Brick Screen Residence pays homage to Bengal's millenia-old brickmaking traditions while executing a contemporary, disciplined architectural form. The primary southern facade features an intricate double-skin terracotta jali screen.",
+    "narrative2": "This screen acts as a breathable environmental buffer: filtering intense tropical afternoon sun, casting dancing geometric shadows across the interior terrazzo floors, and inducing passive air movement even on windless humid days.",
+    "narrative3": "Behind the porous brick veil, deep recessed balconies and landscaped courtyards create intimate private retreats that remain shielded from the adjacent street without shutting out the neighborhood life.",
+    "heroImage": "images/hero-bg.jpg",
+    "images": [
+      {
+        "path": "images/hero-bg.jpg",
+        "caption": "01. Solar screening and brick craftsmanship detail"
+      },
+      {
+        "path": "images/project2.jpg",
+        "caption": "02. Spatial interface between cast concrete and masonry"
+      },
+      {
+        "path": "images/project1.jpg",
+        "caption": "03. Neighborhood context and surrounding street fabric"
+      }
+    ]
+  }
+]

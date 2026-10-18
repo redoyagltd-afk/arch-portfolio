@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — ARK STUDIO</title>
+    <meta name="description" content="About Ark Studio — Architectural philosophy, practice focus, professional background, and design capabilities.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="About — ARK STUDIO">
+    <meta property="og:description" content="Architectural philosophy, practice focus, and professional background.">
+    <meta property="og:image" content="images/project2.jpg">
+
+    <!-- Inline Theme Init Script (Prevents FOUC) -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('ark_theme');
+                if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">ARK STUDIO</a>
+        </div>
+        <div class="header-actions">
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html#work">Work</a>
+                <a href="about.html" aria-current="page">About</a>
+                <a href="journal.html">Journal</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle dark / light mode">
+                <svg class="icon-moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1 class="page-title">About the Studio</h1>
+        </header>
+
+        <!-- About Layout -->
+        <section class="about-layout" aria-label="Studio Biography and Practice">
+            
+            <!-- Left Column: Focus & Statement -->
+            <div class="about-intro">
+                <p>
+                    Ark Studio is an architectural practice based in Dhaka, Bangladesh, engaging with architecture, spatial research, and environmental context.
+                </p>
+                <p>
+                    Our work investigates how restrained forms, truthful materials, and passive climate strategies can create meaningful spaces that endure both socially and ecologically.
+                </p>
+            </div>
+
+            <!-- Right Column: Details & Capabilities -->
+            <div class="about-details">
+                
+                <h2 class="about-section-title">Areas of Practice</h2>
+                <ul class="about-list">
+                    <li>Residential &amp; Housing Design</li>
+                    <li>Urban Architecture &amp; Public Spaces</li>
+                    <li>Adaptive Reuse &amp; Renovation</li>
+                    <li>Spatial Research &amp; Digital Visualization</li>
+                </ul>
+
+                <h2 class="about-section-title">Background &amp; Philosophy</h2>
+                <p style="font-size: var(--text-base); color: var(--color-text-body); line-height: var(--leading-relaxed); margin-bottom: var(--space-md);">
+                    Rooted in the rich architectural heritage of Bengal and contemporary architectural discourses, Ark Studio approaches each site with rigorous context analysis, material experimentation, and structural precision.
+                </p>
+
+                <h2 class="about-section-title">Curriculum Vitae</h2>
+                <p style="font-size: var(--text-base); color: var(--color-text-body); line-height: var(--leading-relaxed); margin-bottom: var(--space-md);">
+                    Comprehensive CV, portfolio publications, and academic references are available upon request.
+                </p>
+
+                <h2 class="about-section-title">Inquiries</h2>
+                <p style="font-size: var(--text-base); color: var(--color-text-body);">
+                    <a href="contact.html" style="border-bottom: 1px solid var(--color-text); padding-bottom: 1px;">Contact the studio &rarr;</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 ARK STUDIO. All rights reserved.</p>
+        <div class="footer-nav">
+            <a href="index.html#work">Work</a>
+            <a href="about.html">About</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>

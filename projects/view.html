@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Project Details — ARK STUDIO</title>
+    <meta name="description" id="meta-desc" content="Architectural project by ARK STUDIO, Dhaka, Bangladesh.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" id="og-title" content="Project Details — ARK STUDIO">
+    <meta property="og:description" id="og-desc" content="Architectural project by ARK STUDIO.">
+    <meta property="og:image" id="og-image" content="../images/project2.jpg">
+
+    <!-- Inline Theme Init Script (Prevents FOUC) -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('ark_theme');
+                if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="../index.html">ARK STUDIO</a>
+        </div>
+        <div class="header-actions">
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="../index.html#work" aria-current="page">Work</a>
+                <a href="../about.html">About</a>
+                <a href="../journal.html">Journal</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+            <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle dark / light mode">
+                <svg class="icon-moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- PROJECT HERO IMAGE -->
+        <div class="project-hero" id="project-hero">
+            <img id="hero-img" src="../images/project2.jpg" alt="Project hero view" fetchpriority="high">
+        </div>
+
+        <!-- PROJECT TITLE & METADATA -->
+        <header class="project-header">
+            <h1 class="project-title" id="proj-title">Loading Project...</h1>
+            <p class="project-meta" id="proj-meta">ARK STUDIO • Architectural Portfolio</p>
+            <hr class="project-divider">
+        </header>
+
+        <!-- PROJECT BODY (SPECS + NARRATIVE) -->
+        <section class="project-body" aria-label="Project Details">
+            
+            <!-- Sidebar: Project Specifications -->
+            <div class="project-specs">
+                <h3>Specifications</h3>
+                <p><strong>Typology:</strong> <span id="spec-typology">—</span></p>
+                <p><strong>Location:</strong> <span id="spec-location">—</span></p>
+                <p><strong>Year:</strong> <span id="spec-year">—</span></p>
+                <p><strong>Status:</strong> <span id="spec-status">—</span></p>
+                <p id="spec-lead-row"><strong>Lead Architect:</strong> <span id="spec-lead">—</span></p>
+                <p><strong>Key Materials:</strong> <span id="spec-materials">—</span></p>
+                <p><strong>Concept:</strong> <span id="spec-concept">—</span></p>
+            </div>
+
+            <!-- Main Narrative -->
+            <div class="project-narrative" id="proj-narrative">
+                <h3>Design Narrative</h3>
+                <p id="narrative-1">Loading architectural narrative...</p>
+                <p id="narrative-2"></p>
+                <p id="narrative-3"></p>
+            </div>
+        </section>
+
+        <!-- DRAWINGS & PROCESS (IMAGE GALLERY) -->
+        <section class="project-gallery" id="project-gallery" aria-label="Project Gallery">
+            <h3 class="project-gallery-title">Drawings &amp; Process</h3>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Injected via script -->
+            </div>
+        </section>
+
+        <!-- PROJECT NAVIGATION (PREV / NEXT) -->
+        <nav class="project-nav" id="project-nav" aria-label="Project navigation">
+            <a href="../index.html#work">&larr; Back to Selected Works</a>
+        </nav>
+
+    </main>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image view modal">
+        <button class="lightbox-close" aria-label="Close image modal">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+        <img src="" alt="">
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 ARK STUDIO. All rights reserved.</p>
+        <div class="footer-nav">
+            <a href="../index.html#work">Work</a>
+            <a href="../about.html">About</a>
+            <a href="../journal.html">Journal</a>
+            <a href="../contact.html">Contact</a>
+            <a href="../dashboard.html">Dashboard</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js" defer></script>
+    <script>
+        (function() {
+            function resolveImgPath(p) {
+                if (!p) return '../images/project2.jpg';
+                if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:')) return p;
+                if (p.startsWith('../')) return p;
+                return '../' + p.replace(/^\//, '');
+            }
+
+            function getSlugFromUrl() {
+                const params = new URLSearchParams(window.location.search);
+                const id = params.get('id') || params.get('slug');
+                if (id) return id;
+                const pathParts = window.location.pathname.split('/');
+                const last = pathParts[pathParts.length - 1];
+                if (last && last !== 'view.html' && last.endsWith('.html')) {
+                    return last.replace('.html', '');
+                }
+                return 'concrete-pavilion';
+            }
+
+            async function initProject() {
+                const slug = getSlugFromUrl();
+                let projects = [];
+
+                // 1. Try local storage drafts first
+                try {
+                    const local = localStorage.getItem('ark_studio_projects_v2');
+                    if (local) projects = JSON.parse(local);
+                } catch (e) {}
+
+                // 2. Fetch canonical JSON
+                try {
+                    const res = await fetch('../data/projects.json');
+                    if (res.ok) {
+                        const json = await res.json();
+                        if (Array.isArray(json) && json.length > 0) {
+                            projects = json;
+                        }
+                    }
+                } catch (e) {}
+
+                const project = projects.find(p => p.slug === slug || p.id === slug) || projects[0];
+                if (!project) {
+                    document.getElementById('proj-title').textContent = 'Project Not Found';
+                    return;
+                }
+
+                // Render meta
+                const titleStr = project.title + ' — ARK STUDIO';
+                document.title = titleStr;
+                const heroSrc = resolveImgPath(project.heroImage || (project.images && project.images[0] && project.images[0].path));
+                document.getElementById('hero-img').src = heroSrc;
+                document.getElementById('hero-img').alt = project.title + ' primary architectural elevation';
+                document.getElementById('proj-title').textContent = project.title;
+                document.getElementById('proj-meta').textContent = [project.typology, project.location, project.year, project.status].filter(Boolean).join(' • ');
+
+                // Specs
+                document.getElementById('spec-typology').textContent = project.typology || '—';
+                document.getElementById('spec-location').textContent = project.location || '—';
+                document.getElementById('spec-year').textContent = project.year || '—';
+                document.getElementById('spec-status').textContent = project.status || '—';
+                document.getElementById('spec-lead').textContent = project.leadArchitect || 'Ark Studio Team';
+                document.getElementById('spec-materials').textContent = project.materials || '—';
+                document.getElementById('spec-concept').textContent = project.concept || '—';
+
+                // Narratives
+                document.getElementById('narrative-1').textContent = project.narrative1 || '';
+                const n2 = document.getElementById('narrative-2');
+                if (project.narrative2) { n2.textContent = project.narrative2; n2.style.display = ''; } else { n2.style.display = 'none'; }
+                const n3 = document.getElementById('narrative-3');
+                if (project.narrative3) { n3.textContent = project.narrative3; n3.style.display = ''; } else { n3.style.display = 'none'; }
+
+                // Gallery
+                const galleryGrid = document.getElementById('gallery-grid');
+                galleryGrid.innerHTML = '';
+                const images = project.images || [];
+                images.forEach((img, idx) => {
+                    const fig = document.createElement('figure');
+                    if (idx === images.length - 1 && images.length % 2 === 1) {
+                        fig.className = 'full-width';
+                    }
+                    const imageEl = document.createElement('img');
+                    imageEl.src = resolveImgPath(img.path);
+                    imageEl.alt = img.caption || (project.title + ' photograph ' + (idx + 1));
+                    imageEl.loading = 'lazy';
+                    const cap = document.createElement('figcaption');
+                    cap.textContent = img.caption || ('Detail ' + (idx + 1));
+                    fig.appendChild(imageEl);
+                    fig.appendChild(cap);
+                    galleryGrid.appendChild(fig);
+                });
+
+                // Prev / Next Navigation
+                const currentIndex = projects.findIndex(p => p.slug === project.slug || p.id === project.id);
+                const nav = document.getElementById('project-nav');
+                nav.innerHTML = '';
+                if (currentIndex > 0) {
+                    const prev = projects[currentIndex - 1];
+                    const prevA = document.createElement('a');
+                    prevA.href = prev.slug + '.html';
+                    prevA.innerHTML = '&larr; Previous: ' + prev.title;
+                    nav.appendChild(prevA);
+                } else {
+                    const homeA = document.createElement('a');
+                    homeA.href = '../index.html#work';
+                    homeA.innerHTML = '&larr; Selected Works';
+                    nav.appendChild(homeA);
+                }
+                if (currentIndex < projects.length - 1) {
+                    const next = projects[currentIndex + 1];
+                    const nextA = document.createElement('a');
+                    nextA.href = next.slug + '.html';
+                    nextA.innerHTML = 'Next: ' + next.title + ' &rarr;';
+                    nav.appendChild(nextA);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initProject);
+            } else {
+                initProject();
+            }
+        })();
+    </script>
+</body>
+</html>
